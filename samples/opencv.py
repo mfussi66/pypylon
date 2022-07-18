@@ -29,6 +29,8 @@ for i, cam in enumerate(cameras):
     cam.Height.SetValue(1200)
     cam.BslScalingEnable.SetValue(True)
     # Print the model name of the camera.
+    cam.AcquisitionFrameRate.SetValue(30.0)
+
     print("Using device ", cam.GetDeviceInfo().GetModelName())
 
 # conecting to the first available camera
