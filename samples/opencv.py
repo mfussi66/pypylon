@@ -27,8 +27,7 @@ for i, cam in enumerate(cameras):
     cam.Open()
     cam.Width.SetValue(1920)
     cam.Height.SetValue(1200)
-    # cam.ScalingHorizontalAbs.SetValue(0.5)
-    # cam.ScalingVerticalAbs.SetValue(0.5)
+    cam.BslScalingEnable.SetValue(True)
     # Print the model name of the camera.
     print("Using device ", cam.GetDeviceInfo().GetModelName())
 
