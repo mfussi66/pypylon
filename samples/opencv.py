@@ -10,9 +10,11 @@ import cv2
 camera = pylon.InstantCamera(pylon.TlFactory.GetInstance().CreateFirstDevice())
 
 camera.Open()
-camera.Width = 1920
-camera.Height =1200
+camera.Width = 2560
+camera.Height =1440
 camera.BslScalingEnable.SetValue(True)
+camera.AcquisitionFrameRateEnable.SetValue(True)
+camera.AcquisitionFrameRate.SetValue(30.0)
 
 # Grabing Continusely (video) with minimal delay
 camera.StartGrabbing(pylon.GrabStrategy_LatestImageOnly)
@@ -25,6 +27,7 @@ converter.OutputBitAlignment = pylon.OutputBitAlignment_MsbAligned
 
 while camera.IsGrabbing():
     grabResult = camera.RetrieveResult(5000, pylon.TimeoutHandling_ThrowException)
+    
 
     if grabResult.GrabSucceeded():
         # Access the image data
@@ -41,3 +44,4 @@ while camera.IsGrabbing():
 camera.StopGrabbing()
 
 cv2.destroyAllWindows()
+
